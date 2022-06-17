@@ -1,7 +1,7 @@
 <script lang="ts">
   import App from "./App.svelte";
 
-  let active = "Spider-Man";
+  let activeIndex = 0;
 
   const apps = [
     {
@@ -13,43 +13,30 @@
       coverImage: "spider-man.webp",
     },
     {
-      name: "Bloodborne1",
-      coverImage: "bloodborne.webp",
+      name: "Hollow Knight",
+      coverImage: "hollow-knight.webp",
     },
     {
-      name: "Spider-Man2",
-      coverImage: "spider-man.webp",
-    },
-    {
-      name: "Bloodborne3",
-      coverImage: "bloodborne.webp",
-    },
-    {
-      name: "Spider-Man4",
-      coverImage: "spider-man.webp",
-    },
-    {
-      name: "Bloodborne5",
-      coverImage: "bloodborne.webp",
-    },
-    {
-      name: "Spider-Man6",
-      coverImage: "spider-man.webp",
-    },
-    {
-      name: "Bloodborne7",
-      coverImage: "bloodborne.webp",
-    },
-    {
-      name: "Spider-Man8",
-      coverImage: "spider-man.webp",
+      name: "Horizon Zero Dawn",
+      coverImage: "horizon.webp",
     },
   ];
+
+  document.onkeydown = checkKey;
+
+  function checkKey(e) {
+    e = e || window.event;
+    if (e.keyCode == "37") {
+      activeIndex -= 1;
+    } else if (e.keyCode == "39") {
+      activeIndex += 1;
+    }
+  }
 </script>
 
 <div class="apps">
-  {#each apps as app (app.name)}
-    <App {app} active={active === app.name} />
+  {#each apps as app, i (i)}
+    <App {app} active={i === activeIndex} />
   {/each}
 </div>
 

@@ -10,6 +10,7 @@
     style="background-image: url(/assets/apps/{app.coverImage})"
   />
   {#if active}<div class="label">Start</div>{/if}
+  {#if active}<div class="title"><span>{app.name}</span></div>{/if}
 </div>
 
 <style lang="sass">
@@ -19,6 +20,9 @@
   display: flex
   flex-direction: column
   align-items: center
+  position: relative
+  transition: height .15s ease, border .3s ease, width .4s ease
+  border: 0px solid rgba(0,0,0,.5)
   .image
     height: 100%
     width: 100%
@@ -26,16 +30,25 @@
     background-position: center
   &.active
     width: 344px
-    height: unset
+    height: 424px
     padding: 2px
     border: 5px solid #DED6E2
     margin: 0px 3px
     .image
       border: 4px solid #95A7C7
       height: 330px
-    .label
-      padding: 19px 0
-      font-size: 32px
-      font-weight: 300
+  .label
+    padding: 19px 0
+    font-size: 32px
+    font-weight: 300
+  .title
+    margin-left: 22px
+    margin-bottom: 19px
+    position: absolute
+    bottom: 0
+    left: 100%
+    font-size: 64px
+    line-height: 64px
+    width: fit-content
 
 </style>
