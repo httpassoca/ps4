@@ -5,3 +5,8 @@
 <h1>Ps4</h1>
 
 <App />
+
+<style lang="sass">
+h1
+  color: red
+</style>
