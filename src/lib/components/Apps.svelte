@@ -26,9 +26,9 @@
 
   function checkKey(e) {
     e = e || window.event;
-    if (e.keyCode == "37") {
+    if (e.keyCode == "37" && activeIndex !== 0) {
       activeIndex -= 1;
-    } else if (e.keyCode == "39") {
+    } else if (e.keyCode == "39" && activeIndex !== apps.length - 1) {
       activeIndex += 1;
     }
   }
