@@ -40,15 +40,15 @@
   .label
     padding: 19px 0
     font-size: 32px
-    font-weight: 300
   .title
     margin-left: 22px
-    margin-bottom: 19px
     position: absolute
     bottom: 0
     left: 100%
     font-size: 64px
     line-height: 64px
-    width: fit-content
-
+    width: 600px
+    height: 80px
+    display: flex
+    align-items: center
 </style>

@@ -1,7 +1,7 @@
 <script lang="ts">
   import App from "./App.svelte";
 
-  let activeIndex = 0;
+  let activeIndex = 1;
 
   const apps = [
     {
@@ -44,7 +44,7 @@
 .apps
   display: flex
   gap: 4px
-  margin-top: 210px
+  margin-top: 83px
   margin-left: 73px
   width: fit-content
 </style>
