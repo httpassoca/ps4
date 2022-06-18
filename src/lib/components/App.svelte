@@ -47,7 +47,7 @@
     left: 100%
     font-size: 64px
     line-height: 64px
-    width: 600px
+    width: 100vw
     height: 80px
     display: flex
     align-items: center

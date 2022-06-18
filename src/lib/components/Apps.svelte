@@ -21,6 +21,10 @@
       name: "Horizon Zero Dawn",
       coverImage: "horizon.webp",
     },
+    {
+      name: "Metal Gear Solid V: The Panthom Pain",
+      coverImage: "metal-gear.webp",
+    },
   ];
 
   document.onkeydown = checkKey;
@@ -29,10 +33,10 @@
     e = e || window.event;
     if (e.keyCode == "37" && activeIndex !== 0) {
       activeIndex -= 1;
-      appsPosition += 200;
+      appsPosition += 206;
     } else if (e.keyCode == "39" && activeIndex !== apps.length - 1) {
       activeIndex += 1;
-      appsPosition -= 200;
+      appsPosition -= 206;
     }
   }
 </script>
@@ -51,4 +55,5 @@
   margin-left: 73px
   width: fit-content
   transition: transform .15s ease-in
+  position: fixed
 </style>
