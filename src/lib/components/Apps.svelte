@@ -6,6 +6,10 @@
 
   const apps = [
     {
+      name: "Ps Store",
+      coverImage: "ps-store.webp",
+    },
+    {
       name: "Bloodborne",
       coverImage: "bloodborne.webp",
     },
