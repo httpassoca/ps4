@@ -2,6 +2,7 @@
   import App from "./App.svelte";
 
   let activeIndex = 1;
+  let appsPosition = 0;
 
   const apps = [
     {
@@ -28,13 +29,15 @@
     e = e || window.event;
     if (e.keyCode == "37" && activeIndex !== 0) {
       activeIndex -= 1;
+      appsPosition += 200;
     } else if (e.keyCode == "39" && activeIndex !== apps.length - 1) {
       activeIndex += 1;
+      appsPosition -= 200;
     }
   }
 </script>
 
-<div class="apps">
+<div class="apps" style="transform: translateX({appsPosition}px)">
   {#each apps as app, i (i)}
     <App {app} active={i === activeIndex} />
   {/each}
@@ -47,4 +50,5 @@
   margin-top: 83px
   margin-left: 73px
   width: fit-content
+  transition: transform .15s ease-in
 </style>

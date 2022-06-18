@@ -30,7 +30,7 @@
       alt="profile icon"
       class="profile-image"
     />
-    <span class="name"> I love you </span>
+    <span class="name"> Big boss </span>
     <img src="/assets/icons/psplus.png" alt="PS Plus icon" class="plus-icon" />
   </div>
   <div class="trophies">
