@@ -36,11 +36,6 @@ export type areas = {
   [key in string]?: area;
 }
 
-export enum AreasEnum {
-  home = 'homeArea',
-  header = 'headerArea',
-}
-
 export const keys = {
   [KeyboardCode.UP]: { psbutton: PSButtonsEnum.UP },
   [KeyboardCode.LEFT]: { psbutton: PSButtonsEnum.LEFT },

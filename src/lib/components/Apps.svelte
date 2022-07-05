@@ -1,6 +1,10 @@
 <script lang="ts">
-  import { area, AreasEnum, KeyboardCode } from "$lib/controls";
-  import { actualArea, keysPressed } from "$lib/store/controls.store";
+  import { area, KeyboardCode } from "$lib/controls";
+  import {
+    actualArea,
+    keysPressed,
+    AreasEnum,
+  } from "$lib/store/controls.store";
   import App from "./App.svelte";
 
   let activeIndex = 1;
@@ -17,7 +21,7 @@
     },
     [KeyboardCode.UP]: {
       function() {
-        actualArea.update(AreasEnum.header);
+        actualArea.update(AreasEnum.HEADER);
       },
       name: "Previous App",
     },
@@ -58,13 +62,13 @@
     },
   ];
 
-  $: if ($actualArea === AreasEnum.home) {
+  $: if ($actualArea === AreasEnum.HOME) {
     document.onkeyup = keyPressEnd;
   }
 
   function keyPressEnd(this: GlobalEventHandlers, ev: KeyboardEvent) {
     keysPressed.keyUp(ev);
-    homeArea[ev.code].function();
+    if ((ev.code as KeyboardCode) in homeArea) homeArea[ev.code].function();
   }
 </script>
 

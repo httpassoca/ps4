@@ -1,10 +1,14 @@
-import { AreasEnum } from '$lib/controls';
-import { writable, } from 'svelte/store';
+import { writable } from 'svelte/store';
 
 type key = {
   code: string,
   pressing: boolean,
   secondsPressed: string | number,
+}
+
+export enum AreasEnum {
+  HOME = 'homeArea',
+  HEADER = 'headerArea',
 }
 
 const createKeysPressed = () => {
@@ -31,7 +35,7 @@ const createKeysPressed = () => {
 export const keysPressed = createKeysPressed();
 
 const createActualArea = () => {
-  const { subscribe, update } = writable<AreasEnum>(AreasEnum.home);
+  const { subscribe, update } = writable<AreasEnum>(AreasEnum.HOME);
   return {
     subscribe, update(newArea: AreasEnum) { update(actualArea => actualArea = newArea) }
   }

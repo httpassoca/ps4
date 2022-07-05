@@ -1,6 +1,10 @@
 <script lang="ts">
-  import { area, AreasEnum, KeyboardCode } from "$lib/controls";
-  import { actualArea, keysPressed } from "$lib/store/controls.store";
+  import { area, KeyboardCode } from "$lib/controls";
+  import {
+    actualArea,
+    AreasEnum,
+    keysPressed,
+  } from "$lib/store/controls.store";
 
   const headerArea: area = {
     [KeyboardCode.LEFT]: {
@@ -11,7 +15,7 @@
     },
     [KeyboardCode.DOWN]: {
       function() {
-        actualArea.update(AreasEnum.home);
+        actualArea.update(AreasEnum.HOME);
       },
       name: "home",
     },
@@ -23,13 +27,13 @@
     },
   };
 
-  $: if ($actualArea === AreasEnum.header) {
+  $: if ($actualArea === AreasEnum.HEADER) {
     document.onkeyup = keyPressEnd;
   }
 
   function keyPressEnd(this: GlobalEventHandlers, ev: KeyboardEvent) {
     keysPressed.keyUp(ev);
-    headerArea[ev.code].function();
+    if ((ev.code as KeyboardCode) in headerArea) headerArea[ev.code].function();
   }
 </script>
 
