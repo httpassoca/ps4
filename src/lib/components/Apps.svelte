@@ -1,9 +1,36 @@
 <script lang="ts">
+  import { area, AreasEnum, KeyboardCode } from "$lib/controls";
+  import { actualArea, keysPressed } from "$lib/store/controls.store";
   import App from "./App.svelte";
 
   let activeIndex = 1;
   let appsPosition = 0;
-
+  const homeArea: area = {
+    [KeyboardCode.LEFT]: {
+      function() {
+        if (activeIndex !== 0) {
+          activeIndex -= 1;
+          appsPosition += 206;
+        }
+      },
+      name: "Previous App",
+    },
+    [KeyboardCode.UP]: {
+      function() {
+        actualArea.update(AreasEnum.header);
+      },
+      name: "Previous App",
+    },
+    [KeyboardCode.RIGHT]: {
+      function() {
+        if (activeIndex !== apps.length - 1) {
+          activeIndex += 1;
+          appsPosition -= 206;
+        }
+      },
+      name: "Next App",
+    },
+  };
   const apps = [
     {
       name: "Ps Store",
@@ -31,17 +58,13 @@
     },
   ];
 
-  document.onkeydown = checkKey;
+  $: if ($actualArea === AreasEnum.home) {
+    document.onkeyup = keyPressEnd;
+  }
 
-  function checkKey(e) {
-    e = e || window.event;
-    if (e.keyCode == "37" && activeIndex !== 0) {
-      activeIndex -= 1;
-      appsPosition += 206;
-    } else if (e.keyCode == "39" && activeIndex !== apps.length - 1) {
-      activeIndex += 1;
-      appsPosition -= 206;
-    }
+  function keyPressEnd(this: GlobalEventHandlers, ev: KeyboardEvent) {
+    keysPressed.keyUp(ev);
+    homeArea[ev.code].function();
   }
 </script>
 

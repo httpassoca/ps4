@@ -1,4 +1,36 @@
 <script lang="ts">
+  import { area, AreasEnum, KeyboardCode } from "$lib/controls";
+  import { actualArea, keysPressed } from "$lib/store/controls.store";
+
+  const headerArea: area = {
+    [KeyboardCode.LEFT]: {
+      function() {
+        console.log("prev header");
+      },
+      name: "Previous App",
+    },
+    [KeyboardCode.DOWN]: {
+      function() {
+        actualArea.update(AreasEnum.home);
+      },
+      name: "home",
+    },
+    [KeyboardCode.RIGHT]: {
+      function() {
+        console.log("Next header");
+      },
+      name: "Next App",
+    },
+  };
+
+  $: if ($actualArea === AreasEnum.header) {
+    document.onkeyup = keyPressEnd;
+  }
+
+  function keyPressEnd(this: GlobalEventHandlers, ev: KeyboardEvent) {
+    keysPressed.keyUp(ev);
+    headerArea[ev.code].function();
+  }
 </script>
 
 <div class="header">
