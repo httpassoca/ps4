@@ -2,9 +2,10 @@
   import type { App } from "$lib/types";
   export let app: App;
   export let active = false;
+  export let down = false;
 </script>
 
-<div class="app" class:active>
+<div class="app" class:active class:down>
   <div
     class="image"
     style="background-image: url(/assets/apps/{app.coverImage})"
@@ -21,7 +22,7 @@
   flex-direction: column
   align-items: center
   position: relative
-  transition: height .15s ease, border .3s ease, width .4s ease
+  transition: height .15s ease, border .3s ease, width .4s ease, transform .3s ease
   border: 0px solid rgba(0,0,0,.5)
   .image
     height: 100%
@@ -34,9 +35,15 @@
     padding: 2px
     border: 5px solid #DED6E2
     margin: 0px 3px
+    transform: translateY(-6px)
     .image
       border: 4px solid #95A7C7
       height: 330px
+
+  &.down
+    width: 182px
+    height: 182px
+    margin: 0px 3px
   .label
     padding: 19px 0
     font-size: 32px

@@ -1,10 +1,6 @@
 <script lang="ts">
-  import { area, KeyboardCode } from "$lib/controls";
-  import {
-    actualArea,
-    AreasEnum,
-    keysPressed,
-  } from "$lib/store/controls.store";
+  import { area, KeyboardCode, makeKeypressEndFunction } from "$lib/controls";
+  import { actualArea, AreasEnum } from "$lib/store/controls.store";
 
   const headerArea: area = {
     [KeyboardCode.LEFT]: {
@@ -31,10 +27,7 @@
     document.onkeyup = keyPressEnd;
   }
 
-  function keyPressEnd(this: GlobalEventHandlers, ev: KeyboardEvent) {
-    keysPressed.keyUp(ev);
-    if ((ev.code as KeyboardCode) in headerArea) headerArea[ev.code].function();
-  }
+  const keyPressEnd = makeKeypressEndFunction(headerArea);
 </script>
 
 <div class="header">

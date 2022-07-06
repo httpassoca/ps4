@@ -62,3 +62,8 @@ function keyPressStart(this: GlobalEventHandlers, ev: KeyboardEvent) {
     return keys;
   })
 }
+
+export const makeKeypressEndFunction = (area: area) => function (this: GlobalEventHandlers, ev: KeyboardEvent) {
+  keysPressed.keyUp(ev);
+  if ((ev.code as KeyboardCode) in area) area[ev.code].function();
+}

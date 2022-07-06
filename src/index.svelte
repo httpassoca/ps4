@@ -11,6 +11,8 @@
 
 <style lang="sass">
 main
-  max-width: 1920px
+  width: 1920px
+  height: 1080px
+  border: 1px solid red
   margin: 0 auto
 </style>
